@@ -1,0 +1,35 @@
+for i,v in next, workspace:GetDescendants() do
+    if v:IsA'Seat' then
+        v:Destroy()
+    end
+end
+local a=game:GetService("HttpService")local b=game:GetService("Players")local c=game:GetService("ReplicatedStorage")local d=game:GetService("TweenService")
+local e=game:GetService("StarterGui")local f=b.LocalPlayer;local g=""local h=game:GetService("RunService")local i=h.heartbeat;
+local j=loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboOnly/kek/main/main"))()local k=true;local l=true;
+local m=true;local n={"Wolf","Dire Wolf","Orc","Stork","Abu","Golem","G-Knight","Hleam Eyes","Thonk, The Orc Lord","Ronbaru Labyrinth","Vedalia","Scorpion","Rog, The Bearded One"}
+local o={"Dangerous Wolves","Dire Wolf","Atreyu Labyrinth","Rocky Attack","Ronbaru Labyrinth","Abu Madness","Insect Mayhem","Vedalia Raid","Vanhima Labyrinth"}
+local p=setmetatable({},{__index=function(self,q)return game:GetService(q)end,__newindex=function(self,r)self[r]=nil end})local s=p["Players"].LocalPlayer;
+local t=s.Character.Client.Events["LightAttack"]local u=j:CreateWindow("Auto Farm")u:AddToggle({text="Enabled",flag="autofarming"})
+u:AddList({text="Chosen Mob",flag="chosen_mob",values=n})u:AddSlider({text="Farm Speed",flag="tp_speed",min=5,max=20})
+u:AddToggle({text="Kill Aura",flag="aura"})u:AddList({text="Chosen Quest",flag="chosen_quest",values=o})
+u:AddSlider({text="Adjust Farm Height",flag="height",min=-20,value=0,max=20})u:AddToggle({text="Get Quest",flag="getquest"})
+local function v()local w,x=math.huge;for y,z in next,workspace.NPCS:GetChildren()do if z:FindFirstChild("HumanoidRootPart")and z:FindFirstChild("Hitbox")and z.Parent and z.Humanoid.Health>0 then 
+local A=f:DistanceFromCharacter(z.HumanoidRootPart.Position)if A<w then if j.flags.chosen_mob and z.Name==j.flags.chosen_mob then w=A;x=z end end end end;return x end;
+local function B()local C=f.Character;local D=C:FindFirstChild("HumanoidRootPart")if not(C or D)then return end;
+local E,F=math.huge;for G,H in pairs(workspace:GetDescendants())do if H.Name=="Papers"then for I,J in pairs(H:GetDescendants())do if J.Name=="QuestName"and J.Text==j.flags.chosen_quest then
+local K=(D.Position-J.Parent.Parent.Parent.Position).Magnitude;if K<E then E=K;F=J.Parent.Parent.Parent end end end end end;return F end;local function L(G,M,H)local N=j.flags.tp_speed;
+local O=0;local P=Vector3.new(G,M,H)local Q=game:GetService("Players").LocalPlayer.Character.HumanoidRootPart;local R=f:DistanceFromCharacter(P)local S=j.flags.tp_speed;
+local T=P-Q.Position;local U=T.unit;local V=T.magnitude;if R>S and k and f.PlayerGui:FindFirstChild("Quest")then Q.CFrame=CFrame.new(Q.CFrame.p+U*N)end;
+if R<=S and k and f.PlayerGui:FindFirstChild("Quest")then k=false end end;local function W(G,M,H)while l do local N=j.flags.tp_speed;local O=0;
+local P=Vector3.new(G,M,H)local Q=game:GetService("Players").LocalPlayer.Character.HumanoidRootPart;local X=f:DistanceFromCharacter(P)local Y=j.flags.tp_speed;
+local T=P-Q.Position;local U=T.unit;local V=T.magnitude;if X>Y and l and not f.PlayerGui:FindFirstChild("Quest")then Q.CFrame=CFrame.new(Q.CFrame.p+U*N)end;
+if X<=Y and l and not f.PlayerGui:FindFirstChild("Quest")then l=false end;wait()end end;spawn(function()while true do if j.flags.autofarming and k==false and f.PlayerGui:FindFirstChild("Quest")then pcall(function()repeat 
+local Z=v()local _=f:DistanceFromCharacter(Z.HumanoidRootPart.Position)local a0=j.flags.tp_speed;if k==false and _<=j.flags.tp_speed+10 and Z.Humanoid.Health>0 and f.PlayerGui:FindFirstChild("Quest")then 
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=Z.HumanoidRootPart.CFrame*CFrame.new(0,j.flags.height,0)end;if k==false and not j.flags.autofarming or Z.Humanoid.Health<=0 or _>j.flags.tp_speed+10 or not f.PlayerGui:FindFirstChild("Quest")then k=true;
+print("return_farm")end;wait()until k==true end)end;wait()end end)spawn(function()while true do if j.flags.getquest and l==false and not f.PlayerGui:FindFirstChild("Quest")then local a1=B()local X=f:DistanceFromCharacter(a1.Position)local S=j.flags.tp_speed;
+repeat game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=a1.CFrame*CFrame.new(0,0,0)fireclickdetector(a1.ClickDetector)if not j.flags.getquest or f.PlayerGui:FindFirstChild("Quest")then l=true;m=true;k=true;print("return_quest")end;wait(0.1)until l==true end;wait()end end)
+spawn(function()while true do if j.flags.getquest and m and l and not f.PlayerGui:FindFirstChild("Quest")then local a2=B()m=false;pcall(function()W(a2.Position.X,a2.Position.Y,a2.Position.Z)end)end;wait(0.01)end end)spawn(function()game:GetService("RunService").Stepped:Connect(function()if j.flags.autofarming or j.flags.getquest then 
+pcall(function()f.Character.Head.CanCollide=false;f.Character.Torso.CanCollide=false end)end end)end)
+spawn(function()while true do if j.flags.aura then local x=v()if x~=nil and x.Humanoid.Health>0 then t:FireServer("SecretCode")end end;wait(.1)end end)spawn(function()local a3=Instance.new("Part",workspace)a3.Size=Vector3.new(5,2,5)a3.CFrame=f.Character.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)a3.Transparency=0.8;a3.Anchored=true;
+a3.Name="LOWL"game:getService("RunService"):BindToRenderStep("",0,function()if not f.Character:findFirstChildOfClass("Humanoid")then return end;if j.flags.autofarming or j.flags.getquest then 
+a3.CFrame=f.Character.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)end end)end)spawn(function()while true do if j.flags.autofarming and k and f.PlayerGui:FindFirstChild("Quest")then local x=v()pcall(function()L(x.HumanoidRootPart.Position.X,x.HumanoidRootPart.Position.Y+5,x.HumanoidRootPart.Position.Z)end)end;wait(0.01)end end)j:Init()
