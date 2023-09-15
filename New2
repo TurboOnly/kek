@@ -1,2 +1,8 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/nano3392374/ddkos/main/gddu"))()
+Note: Don't execute them at the same time
+--Makesure you execute this first
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboOnly/kek/main/New1"))()
+
+
+--Then execute this
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nano3392374/ddkos/main/gddu"))()
+
