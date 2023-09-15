@@ -1,8 +1,10 @@
 Note: Don't execute them at the same time
---Makesure you execute this first
+DONT RUN THEN AT THE SAME TIME ONE AT A TIME ONLY
+Makesure you execute this first
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboOnly/kek/main/New1"))()
 
 
---Then execute this
+
+Then execute this
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nano3392374/ddkos/main/gddu"))()
 
